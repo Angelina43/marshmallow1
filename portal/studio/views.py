@@ -15,8 +15,9 @@ import datetime
 
 
 def index(request):
-    num_order = Order.objects.filter(status__exact='c')[:4]
-    num_status = Order.objects.filter(status__exact='a').count()
+    this_month = datetime.datetime.now().month
+    num_order = Order.objects.filter(status__exact='c').filter(day_add__month=this_month)[:4]
+    num_status = Order.objects.filter(status__exact='n').count()
     return render(
         request,
         'index.html',

@@ -63,10 +63,7 @@ class UpdateOrderForm(forms.ModelForm):
                 'После изменения статуса на принят в работу нужно добавить комментарий'
             )}
             raise ValidationError(errors)
-        elif status == 'c' and img is None:
-            errors = {'status': ValidationError(
-                'После изменения статуса на выполнено нужно добавить фото'
-            )}
+
             raise ValidationError(errors)
         elif status == 'n':
             errors = {'status': ValidationError(
